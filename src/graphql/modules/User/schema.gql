@@ -1,0 +1,25 @@
+type User {
+  id : Int
+  nome : String
+  email : String
+  telefone : String
+  perfil : String
+}
+
+input UserInput {
+  nome : String!
+  email : String!
+  telefone : String
+}
+
+type Query {
+  usuarios : [User]
+  usuario(id : Int) : User
+  pesquisaUsuario(nome : String) : [User]
+}
+
+type Mutation {
+  cadastrarUsuario(data : UserInput) : User!
+  atualizarUsuario(id : Int!, data : UserInput) : User
+  deletarUsuario(id : Int!) : User!
+}

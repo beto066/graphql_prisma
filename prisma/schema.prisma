@@ -1,0 +1,35 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["fullTextSearch"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = "postgresql://postgres:postgres@localhost:7777/postgres?schema=public"
+}
+
+model User {
+  id        Int     @id @default(autoincrement())
+  nome      String
+  email     String  @unique
+  perfil    Int     @default(1)
+  telefone  String?
+}
+
+// model Post {
+//   id        Int     @id @default(autoincrement())
+//   title     String
+//   content   String?
+//   published Boolean @default(false)
+//   author    User    @relation(fields: [authorId], references: [id])
+//   authorId  Int
+// }
+
+// model Perfil {
+//   id          Int     @id @default(autoincrement())
+//   descricao   String
+//   usuarios User[]
+// }
